@@ -1,10 +1,10 @@
-# Kursi Plastic Recycling - Object Identifier System
+# Plastic Recycling - Object Identifier System
 
-This project creates a sorting system for Kursi Plastic Recycling that can tell the difference between black, transparent, and colorful plastic objects, then send them to the right conveyor belt.
+This project creates a sorting system for Plastic Recycling that can tell the difference between black, transparent, and colorful plastic objects, then send them to the right conveyor belt.
 
 ## Project Overview
 
-At Kursi, we handle three main types of plastic that need to be sorted separately:
+We handle three main types of plastic that need to be sorted separately:
 - Black plastic → Conveyor Belt A
 - Transparent plastic → Conveyor Belt B
 - Colorful plastic → Conveyor Belt C
