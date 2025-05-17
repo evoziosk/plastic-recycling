@@ -1,8 +1,8 @@
 document.addEventListener('DOMContentLoaded', function() {
-    // Create an instance of the identifier
+    // Make a new plastic sorter thingy
     const identifier = new PlasticObjectIdentifier();
 
-    // All image paths from the three folders
+    // All the pictures we have
     const allImages = {
         'images/black': ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg', '9.jpg', '10.jpg'],
         'images/transparent': ['1.jpg', '2.jpg', '3.jpg', '4.jpg', '5.jpg', '6.jpg', '7.jpg', '8.jpg'],
@@ -68,10 +68,10 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
     
-    // The imageAnalyzer object will perform color/brightness analysis
+    // image color checking stuff
     const imageAnalyzer = {
         /**
-         * Analyze an image to determine its type (black, transparent, colorful)
+         * Look at an image and figure out what color it is
          * @param {string} imageSrc - Path to the image
          * @param {Function} callback - Callback function with result
          */
@@ -90,27 +90,28 @@ document.addEventListener('DOMContentLoaded', function() {
         },
         
         /**
-         * Process image using canvas to determine its characteristics
+         * this actually checks the colors
+         * It's pretty math-heavy but it works... most of the time :)
          * @param {HTMLImageElement} img - The image to analyze
          * @returns {Object} Analysis results
          */
         processImage: function(img) {
-            // Create canvas and draw image
+            // Draw the image on a canvas so we can mess with it
             const canvas = document.createElement('canvas');
             const ctx = canvas.getContext('2d');
             canvas.width = img.width;
             canvas.height = img.height;
             ctx.drawImage(img, 0, 0);
 
-            // Extract pixel data
+            // Get all the pixels - this might be slow for big pictures!
             const { data } = ctx.getImageData(0, 0, canvas.width, canvas.height);
             const totalPixels = data.length / 4;
 
-            // HSL accumulators
+            // Add up the brightness and color stuff
             let sumLightness = 0;
             let sumSaturation = 0;
 
-            // Loop over pixels
+            // Look at each pixel one by one
             for (let i = 0; i < data.length; i += 4) {
                 const r = data[i] / 255;
                 const g = data[i + 1] / 255;
@@ -137,7 +138,7 @@ document.addEventListener('DOMContentLoaded', function() {
             const avgL = sumLightness / totalPixels;
             const avgS = sumSaturation / totalPixels;
 
-            // Classify with refined transparent logic
+            // Figure out if it's black, clear or colorful
             let objectType, confidenceScore, classificationReason;
             if (avgL < 30 && avgS < 40) {
                 objectType = 'black';
@@ -174,7 +175,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     /**
-     * Process a batch of random objects
+     * Process a bunch of objects at once 
      * @param {number} count - Number of objects to process
      */
     function processBatchObjects(count) {
@@ -388,6 +389,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     }
     
-    // Initialize with a random object analysis
+    // Start with a random object when page loads
     analyzeRandomObject();
 });

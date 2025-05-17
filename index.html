@@ -7,15 +7,18 @@
     <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+    <!-- Main container - everything goes in here -->
     <div class="container">
         <header>
             <h1>Kursi Plastic Recycling</h1>
         </header>
 
+        <!-- Buttons to pick objects - might add more later -->
         <div class="control-panel">
             <h2>Object Identifier Module</h2>
             <div class="object-selector">
                 <h3>Select a plastic object:</h3>
+                <!-- These buttons let you pick what to analyze -->
                 <button id="black-object" class="object-btn black">Black Plastic</button>
                 <button id="transparent-object" class="object-btn transparent">Transparent Plastic</button>
                 <button id="colorful-object" class="object-btn colorful">Colorful Plastic</button>
@@ -23,12 +26,16 @@
             </div>
         </div>
 
+        <!-- This is where all the cool visuals happen -->
         <div class="simulation-area">
+            <!-- Shows the current object being processed -->
             <div class="object-display">
                 <img id="current-object" class="plastic-object" src="" alt="Plastic object">
             </div>
             
+            <!-- The three conveyor belts - A, B, and C -->
             <div class="conveyor-belts">
+                <!-- Black belt -->
                 <div class="conveyor-belt" id="belt-A">
                     <h3>Conveyor Belt A</h3>
                     <div class="belt black-belt">
@@ -37,6 +44,7 @@
                     <p>Black Objects</p>
                 </div>
                 
+                <!-- Clear belt -->
                 <div class="conveyor-belt" id="belt-B">
                     <h3>Conveyor Belt B</h3>
                     <div class="belt transparent-belt">
@@ -45,6 +53,7 @@
                     <p>Transparent Objects</p>
                 </div>
                 
+                <!-- Colorful belt -->
                 <div class="conveyor-belt" id="belt-C">
                     <h3>Conveyor Belt C</h3>
                     <div class="belt colorful-belt">
@@ -55,6 +64,7 @@
             </div>
         </div>
         
+        <!-- Results get shown here -->
         <div class="info-panel">
             <h3>Processing Results</h3>
             <div id="results-display"></div>
@@ -65,6 +75,7 @@
         </footer>
     </div>
 
+    <!-- Load our scripts - order matters! -->
     <script src="PlasticObjectIdentifier.js"></script>
     <script src="app.js"></script>
 </body>

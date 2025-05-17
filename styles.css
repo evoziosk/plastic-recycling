@@ -1,4 +1,4 @@
-/* Global styles */
+/* Colors we're using*/
 :root {
     --primary-color: #009688;
     --secondary-color: #4CAF50;
@@ -6,12 +6,14 @@
     --light-color: #E0F2F1;
 }
 
+/* Make everything behave a bit better */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
+/* Basic page style */
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
@@ -19,12 +21,14 @@ body {
     color: #333;
 }
 
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 20px;
 }
 
+/* Title at top of page */
 header {
     text-align: center;
     margin-bottom: 30px;
@@ -152,13 +156,14 @@ h2, h3 {
     animation: pulse 1s infinite;
 }
 
+/*wiggly animation for processing objects */
 @keyframes pulse {
     0% { transform: scale(1); }
     50% { transform: scale(1.1); }
     100% { transform: scale(1); }
 }
 
-/* Conveyor Belts */
+/* Conveyor belts styling */
 .conveyor-belts {
     display: flex;
     justify-content: space-between;
@@ -311,7 +316,6 @@ h2, h3 {
     width: 100%;
 }
 
-/* Responsive Design */
 @media (max-width: 768px) {
     .conveyor-belts {
         flex-direction: column;

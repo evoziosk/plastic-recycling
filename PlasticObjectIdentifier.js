@@ -1,31 +1,28 @@
 /**
- * Kursi Plastic Recycling - Object Identifier Module
- * 
- * This module identifies plastic objects by type and routes them
- * to the appropriate conveyor belt for recycling.
+ * This figures out where to send plastic things based on color.
  */
 
-// Object type constants
+// Types of plastic we can handle
 const PlasticObjectType = {
   BLACK: 'black',
   TRANSPARENT: 'transparent',
   COLORFUL: 'colorful'
 };
 
-// Conveyor belt constants
+// Our conveyor belts
 const ConveyorBelt = {
-  A: 'A', // For black objects
-  B: 'B', // For transparent objects
-  C: 'C'  // For colorful objects
+  A: 'A', // Black stuff goes here
+  B: 'B', // Clear stuff goes here
+  C: 'C'  // Colorful stuff goes here
 };
 
 /**
- * Class responsible for identifying plastic objects and routing them
- * to the correct conveyor belt.
+ * This is the main class that does all the work
  */
 class PlasticObjectIdentifier {
   /**
-   * Identifies the type of a plastic object based on its properties
+   * Figure out what type of plastic it is by looking at it
+   * Might not work for weird colors or dark lighting!
    * @param {Object} object - The plastic object to identify
    * @returns {string} The type of the plastic object
    */
@@ -47,7 +44,8 @@ class PlasticObjectIdentifier {
   }
 
   /**
-   * Routes an object to the appropriate conveyor belt based on its type
+   * Once we know what kind of plastic it is, send it to the right belt
+   * just a switch statement
    * @param {string} objectType - The type of plastic object
    * @returns {string} The conveyor belt to route the object to
    */
@@ -65,8 +63,8 @@ class PlasticObjectIdentifier {
   }
 
   /**
-   * Processes a plastic object by identifying it and routing it
-   * to the correct conveyor belt
+   * Takes a plastic object and processes it from start to finish
+   * This is what you should call from outside
    * @param {Object} object - The plastic object to process
    * @returns {Object} The processing result containing object type and conveyor belt
    */
@@ -81,11 +79,8 @@ class PlasticObjectIdentifier {
   }
 }
 
-// Make the module work in both Node.js and browser environments
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    PlasticObjectIdentifier,
-    PlasticObjectType,
-    ConveyorBelt
-  };
-}
+module.exports = {
+  PlasticObjectIdentifier,
+  PlasticObjectType,
+  ConveyorBelt
+};

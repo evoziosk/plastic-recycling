@@ -1,72 +1,66 @@
 # Kursi Plastic Recycling - Object Identifier System
 
-This project implements an automated sorting system for Kursi Plastic Recycling, which classifies plastic objects as black, transparent, or colorful and routes them to the appropriate conveyor belt.
+This project creates a sorting system for Kursi Plastic Recycling that can tell the difference between black, transparent, and colorful plastic objects, then send them to the right conveyor belt.
 
 ## Project Overview
 
-Kursi specializes in processing three types of plastic objects that are sorted onto separate conveyor belts:
-- Black objects → Conveyor Belt A
-- Transparent objects → Conveyor Belt B
-- Colorful objects → Conveyor Belt C
+At Kursi, we handle three main types of plastic that need to be sorted separately:
+- Black plastic → Conveyor Belt A
+- Transparent plastic → Conveyor Belt B
+- Colorful plastic → Conveyor Belt C
 
-This sorting ensures that each type of plastic is processed independently to maintain purity during recycling into chairs.
+This separation is important because it keeps each type of plastic pure during the recycling process when we turn them into chairs.
 
 ## How to Run the Project
 
-1. Clone this repository to your local machine
-2. Make sure you have the images organized in these folders:
-   - images/black/ (10+ images of black plastic objects)
-   - images/transparent/ (10+ images of transparent plastic objects)
-   - images/colorful/ (10+ images of colorful plastic objects)
-3. Open `index.html` in a modern web browser
-4. Use the interface buttons to select and process different plastic objects
+1. Clone this repository to your computer
+2. Add your plastic images to these folders:
+   - images/black/ (at least 10 images of black plastic)
+   - images/transparent/ (at least 10 images of clear plastic)
+   - images/colorful/ (at least 10 images of colored plastic)
+3. Open `index.html` in Chrome, Firefox, or any modern browser
+4. Try it out! Click different buttons to process plastic objects
 
 ## Implementation Details
 
-### Image Analysis Logic
+### How the Image Analysis Works
 
-The system uses the following approach to classify plastic objects:
+Our system looks at images of plastic and sorts them using HSL color analysis:
 
-1. **Black Object Detection**:
-   - If over 70% of pixels are dark (brightness < 50), the object is classified as black
-   - These objects are sent to Conveyor Belt A
+1. **Black Plastic Detection**:
+   - We check if the image has low lightness (L < 30%) and low saturation
+   - Dark objects with little color variation go to Conveyor Belt A
 
-2. **Transparent Object Detection**:
-   - If average brightness is high (> 180) with limited color variety
-   - These objects are sent to Conveyor Belt B
+2. **Transparent Plastic Detection**:
+   - We look for high lightness values and count near-white pixels
+   - Objects with many bright pixels and low color saturation go to Conveyor Belt B
 
-3. **Colorful Object Detection**:
-   - If the image contains many distinct colors (> 100)
-   - These objects are sent to Conveyor Belt C
+3. **Colorful Plastic Detection**:
+   - We measure color saturation - how vivid the colors are
+   - Objects with moderate to high saturation go to Conveyor Belt C
 
 ### Key Components
 
-1. **PlasticObjectIdentifier.js**: Core module that determines the conveyor belt based on object type
-2. **app.js**: Handles image analysis and user interface interactions
-3. **index.html**: Web interface for demonstrating the system
-4. **styles.css**: Styling for the web interface
+1. **PlasticObjectIdentifier.js**: Core module that routes objects to the right conveyor belt
+2. **app.js**: Handles the image processing and user interface
+3. **index.html**: The web interface you interact with
+4. **styles.css**: Makes everything look nice
 
-### Image Analysis Process
+### The Analysis Process Step by Step
 
-1. Load image into a canvas element
-2. Analyze pixel data to calculate:
-   - Average brightness
-   - Percentage of dark pixels
-   - Variety of colors present
-3. Apply classification rules based on these measurements
-4. Determine the appropriate conveyor belt
+1. We load your image onto a virtual canvas
+2. For each pixel, we calculate:
+   - Lightness (how bright/dark it is)
+   - Saturation (how colorful it is)
+   - Percentage of white pixels (for transparent detection)
+3. Based on these values, we classify the object
+4. The system displays results and shows the object moving to the correct belt
 
 ## Dataset
 
-The dataset consists of 10-20 images for each category:
-- Black plastic objects (various black plastic items)
-- Transparent plastic objects (clear plastics of different shapes)
-- Colorful plastic objects (multi-colored plastic items)
+Our testing dataset has 10-20 images in each category:
+- Various black plastic items
+- Clear/transparent plastics of different shapes
+- Colorful plastic objects with different patterns
 
-All images were manually captured and sorted to ensure proper classification.
-
-## Future Improvements
-
-- Implement machine learning for more accurate classification
-- Add support for processing video streams in real-time
-- Enhance the analysis to detect specific types of plastic (PET, HDPE, etc.)
+The images were taken in consistent lighting to help with accurate classification.
