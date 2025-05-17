@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kursi Plastic Recycling</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Kursi Plastic Recycling</h1>
+        </header>
+
+        <div class="control-panel">
+            <h2>Object Identifier Module</h2>
+            <div class="object-selector">
+                <h3>Select a plastic object:</h3>
+                <button id="black-object" class="object-btn black">Black Plastic</button>
+                <button id="transparent-object" class="object-btn transparent">Transparent Plastic</button>
+                <button id="colorful-object" class="object-btn colorful">Colorful Plastic</button>
+                <button id="random-object" class="object-btn random">Random Object</button>
+            </div>
+        </div>
+
+        <div class="simulation-area">
+            <div class="object-display">
+                <img id="current-object" class="plastic-object" src="" alt="Plastic object">
+            </div>
+            
+            <div class="conveyor-belts">
+                <div class="conveyor-belt" id="belt-A">
+                    <h3>Conveyor Belt A</h3>
+                    <div class="belt black-belt">
+                        <div class="belt-items" id="belt-A-items"></div>
+                    </div>
+                    <p>Black Objects</p>
+                </div>
+                
+                <div class="conveyor-belt" id="belt-B">
+                    <h3>Conveyor Belt B</h3>
+                    <div class="belt transparent-belt">
+                        <div class="belt-items" id="belt-B-items"></div>
+                    </div>
+                    <p>Transparent Objects</p>
+                </div>
+                
+                <div class="conveyor-belt" id="belt-C">
+                    <h3>Conveyor Belt C</h3>
+                    <div class="belt colorful-belt">
+                        <div class="belt-items" id="belt-C-items"></div>
+                    </div>
+                    <p>Colorful Objects</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-panel">
+            <h3>Processing Results</h3>
+            <div id="results-display"></div>
+        </div>
+        
+        <footer>
+            <p>Made by Saad Bilal Khalid & Kissa Fatima</p>
+        </footer>
+    </div>
+
+    <script src="PlasticObjectIdentifier.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>
